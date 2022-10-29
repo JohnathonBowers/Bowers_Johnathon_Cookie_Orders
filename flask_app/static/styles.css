@@ -1,0 +1,24 @@
+* {
+    border: 0px;
+    outline: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+#btn:hover {
+    background-color: #485056;
+}
+
+.flashes {
+    color: red;
+}
+
+.action-link {
+    border-right: 1px solid black;
+    padding-right: 10px;
+}
+
+.action-link:last-of-type {
+    border-right: none;
+    padding-left: 10px;
+}

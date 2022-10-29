@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Orders</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar bg-success">
+        <div class="container d-flex justify-content-start">
+            <a href="/cookies" class="navbar-brand text-white me-4"><h2>Cookies</h2></a>
+            <div class="navbar-nav">
+                <a href="/cookies" class="nav-link active text-white me-4">Home</a>
+            </div>
+            <div class="navbar-nav">
+                <a href="/cookies/new" class="nav-link text-white">Order</a>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex flex-column container col-lg-5 p-4">
+        <h1 class="mb-4">All Cookie Orders</h1>
+        <table class="table table-striped table-hover table-bordered mb-4">
+            <thead class="text-center">
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Cookie Type</th>
+                    <th>Number of Boxes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% if cookies %}
+                    {% for cookie in cookies %}
+                        <tr>
+                            <td>{{ cookie.name }}</td>
+                            <td>{{ cookie.cookie_type }}</td>
+                            <td>{{ cookie.box_nums }}</td>
+                            <td><a href="/cookies/edit/{{ cookie.id }}" class="action-link">edit</a><a href="/cookies/delete/{{ cookie.id }}" class="action-link">delete</a></td>
+                        </tr> 
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                        <td>---</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <a href="/cookies/new" class="btn btn-dark btn-outline-light text-white col-3" id="btn">New Order</a>
+    </div>
+</body>
+</html>
